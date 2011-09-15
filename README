@@ -1,0 +1,8 @@
+Sample bitfloor trader implementation in python
+
+To run random trader:
+You need to put your api and secret keys into a json file in the keys directory.
+Look at keys/test0.json for an example.
+
+. python.env
+bin/rand.py 1 keyfile
