@@ -9,6 +9,10 @@ import json_ascii
 import copy
 from decimal import Decimal
 import decimal
+import os
+
+with open(os.path.join(os.path.dirname(__file__), '../config.json')) as f:
+    config = json.load(f, object_hook=json_ascii.decode_dict)
 
 class RAPI(object):
     def __init__(self, product_id, key, secret):
@@ -66,7 +70,7 @@ class RAPI(object):
 
     def _send_get(self, url, payload={}):
         body = urllib.urlencode(payload)
-        conn = httplib.HTTPConnection('localhost', 2000) # TODO
+        conn = httplib.HTTPConnection(config['host'], config['data_port'])
         conn.request("GET", url, body)
         resp = conn.getresponse()
         s = resp.read()
@@ -91,7 +95,7 @@ class RAPI(object):
             'Content-Length': len(body)
         }
 
-        conn = httplib.HTTPConnection('localhost', 2020) # TODO
+        conn = httplib.HTTPConnection(config['host'], config['order_port'])
         conn.request("POST", url, body, headers)
         resp = conn.getresponse()
         s = resp.read()
