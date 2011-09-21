@@ -22,4 +22,8 @@ class Shell(cmd.Cmd):
     def do_buy(self, arg):
         trade(0, arg)
 
+    def do_EOF(self, arg):
+        print
+        return True
+
 Shell().cmdloop()
