@@ -9,9 +9,9 @@ bitfloor = args.get_rapi()
 def trade(side, arg):
     try:
         size, price = arg.split()
-        print bitfloor.order_new(side=side, size=size, price=price)
     except:
         print "Invalid arg {1}, expected size price".format(side, arg)
+    print bitfloor.order_new(side=side, size=size, price=price)
 
 class Shell(cmd.Cmd):
     prompt = '(buy|sell size price) '
