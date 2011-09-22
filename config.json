@@ -1,5 +1,5 @@
 {
-    "host": "localhost",
-    "data_port": 2000,
-    "order_port": 2020
+    "host": "api.testnet.bitfloor.com",
+    "data_port": 443,
+    "order_port": 443
 }
