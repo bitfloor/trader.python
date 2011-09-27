@@ -44,7 +44,7 @@ def get_our_book():
         size = Decimal(str(o['size']))
         price = Decimal(str(o['price']))
         order = Order(size, price)
-        order.id = o['id'] # TODO: hacky
+        order.id = o['order_id'] # TODO: hacky
         tup = (str(price), str(size))
         if o['side'] == 0:
             our_book['bids'].setdefault(price, []).append(order)
