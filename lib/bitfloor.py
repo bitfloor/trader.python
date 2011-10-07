@@ -61,8 +61,8 @@ class RAPI(object):
     def orders(self):
         return self._send_post('/orders')
 
-    def positions(self):
-        return self._send_post('/positions')
+    def accounts(self):
+        return self._send_post('/accounts')
 
     def floor_inc(self, n):
         return (Decimal(str(n))/self._inc).quantize(Decimal('1'), rounding=decimal.ROUND_DOWN)*self._inc

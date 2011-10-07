@@ -22,7 +22,7 @@ def get_mtgox():
 
 def get_funds():
     pos = {}
-    bpositions = bitfloor.positions()
+    bpositions = bitfloor.accounts()
     for p in bpositions:
         pos[p['currency']] = Decimal(str(p['amount']))
     return pos
