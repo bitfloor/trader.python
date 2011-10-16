@@ -24,7 +24,7 @@ class RAPI(object):
         self._key = key
         self._secret = secret
         self._product_id = product_id
-        self._inc = Decimal('0.05') # TODO: get from bitfloor
+        self._inc = Decimal('0.01') # TODO: get from bitfloor
 
     def book(self, level=1):
         url = '/book/L{1}/{0}'.format(self._product_id, level)

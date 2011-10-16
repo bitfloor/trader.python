@@ -70,7 +70,7 @@ def run():
     mbook = Book.parse(get_mtgox())
     bbook = Book.parse(bitfloor.book(level=2))
 
-    mbook.flatten('0.05')
+    mbook.flatten('0.01')
 
     our_book, our_book2 = get_our_book()
 
