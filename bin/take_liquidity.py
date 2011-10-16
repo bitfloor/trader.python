@@ -17,10 +17,16 @@ while True:
     # add order
     book = bitfloor.book()
     side = random.randrange(2)
-    if side == 0:
-        price = float(book['ask'][0])*1.1
-    else:
-        price = float(book['bid'][0])*.9
+    try:
+        if side == 0:
+            price = float(book['ask'][0])*1.1
+        else:
+            price = float(book['bid'][0])*.9
+    except:
+        # this can happen if the book has no liquidity
+        # if so, cannot take liquidity, so wait and try again
+        time.sleep(1)
+        continue
 
     price = bitfloor.round_inc(price)
 
