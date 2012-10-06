@@ -90,12 +90,14 @@ class RAPI(object):
 
         body = urllib.urlencode(payload)
 
-        sig = hmac.new(self._secret, body, hashlib.sha512).digest()
+        sig = hmac.new(base64.b64decode(self._secret), body, hashlib.sha512).digest()
         sig_b64 = base64.b64encode(sig)
 
         headers = {
             'bitfloor-key': self._key,
             'bitfloor-sign': sig_b64,
+            'bitfloor-passphrase': config['passhprase'],
+            'bitfloor-version': config['version'],
             'Content-Type': 'application/x-www-form-urlencoded',
             'Content-Length': len(body)
         }
